@@ -1,0 +1,32 @@
+{
+  "name": "uber_backend",
+  "version": "1.0.0",
+  "description": "Backend of uber app clone ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gautam-Chaurasiya-v1/Uber-app-clone.git"
+  },
+  "keywords": [
+    "backend",
+    "clone",
+    "uber-app",
+    "Gautam",
+    "InfinitexDev"
+  ],
+  "author": "InfinitexDev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gautam-Chaurasiya-v1/Uber-app-clone/issues"
+  },
+  "homepage": "https://github.com/Gautam-Chaurasiya-v1/Uber-app-clone#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
