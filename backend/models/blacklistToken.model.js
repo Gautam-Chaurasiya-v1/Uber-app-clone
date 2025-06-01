@@ -13,6 +13,6 @@ const blacklistTokenSchema = new Schema({
     }
 });
 
-const blacklistToken = model('BlackListToken', blacklistTokenSchema);
+const BlacklistToken = model('BlackListToken', blacklistTokenSchema);
 
-module.exports = blacklistToken;
+module.exports = BlacklistToken;
