@@ -32,7 +32,7 @@ The request body should be in JSON format and include the following fields:
   - `password` (string): User's password (minimum 6 characters).
 - `token` (String): JWT Token
 
-## `/users/login` Endpoint
+## `/user/loginUser` Endpoint
 
 ### Description
 
@@ -41,10 +41,6 @@ Authenticates a user using their email and password, returning a JWT token upon 
 ### HTTP Method
 
 `POST`
-
-### Endpoint
-
-`/users/login`
 
 ### Request Body
 
@@ -63,7 +59,7 @@ The request body should be in JSON format and include the following fields:
   - `password` (string): User's password (minimum 6 characters).
 - `token` (String): JWT Token
 
-## `/users/profile` Endpoint
+## `/user/userProfile` Endpoint
 
 ### Description
 
@@ -88,7 +84,7 @@ Requires a valid JWT token in the Authorization header:
 
 
 
-## `/users/logout` Endpoint
+## `/user/logoutUser` Endpoint
 
 ### Description
 

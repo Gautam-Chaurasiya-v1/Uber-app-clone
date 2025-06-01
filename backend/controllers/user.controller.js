@@ -1,7 +1,7 @@
 const User = require("../models/user.model.js")
 const userService = require("../services/user.service.js")
 const { validationResult } = require("express-validator");
-
+const blacklistToken = require("../models/blacklistToken.model.js")
 
 module.exports.registerUser = async (req, res, next) => {
     const errors = validationResult(req);
@@ -25,6 +25,8 @@ module.exports.registerUser = async (req, res, next) => {
     })
 
     const token = newUser.generateAuthToken();
+
+    res.cookie('token', token);
 
     res.status(201).json({ token, newUser });
 }
@@ -54,10 +56,27 @@ module.exports.loginUser = async (req, res, next) => {
 
     const token = existingUser.generateAuthToken();
 
+    res.cookie('token', token);
+
     //TODO:  Try to remove hashed password too
 
     return res.status(200).json({
         token,
         user: existingUser
     });
+}
+
+module.exports.getUserProfile = async (req, res) => {
+
+    return res.status(200).json(req.user);
+}
+
+module.exports.logoutUser = async (req, res) => {
+    const token = req.cookies?.token || req.headers.authorization.split(' ')[1];
+
+    await blacklistToken.create({ token });
+
+    res.clearCookie('token');
+
+    return res.status(200).json({ message: 'Logged Out' });
 }
