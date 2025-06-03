@@ -42,3 +42,49 @@ module.exports.registerCaptain = async (req, res) => {
     return res.status(201).json({ token, captain: newCaptain });
 
 }
+
+
+module.exports.loginCaptain = async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { email, password } = req.body;
+
+    const existingCaptain = await Captain.findOne({ email }).select('+password');
+
+    if (!existingCaptain) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+    }
+
+    const passwordCheck = await existingCaptain.comparePassword(password);
+
+    if (!passwordCheck) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+    }
+
+    const token = existingCaptain.generateAuthToken();
+
+    res.cookie('token', token);
+
+    return res.status(200).json({ token, captain: existingCaptain });
+}
+
+
+module.exports.captainProfile = async (req, res) => {
+    return res.status(200).json(req.captain);
+}
+
+
+module.exports.logoutCaptain = async (req, res) => {
+    const token = req.cookies?.token || req.headers.authorization?.split(' ')[1];
+
+    await BlacklistToken.create({ token });
+
+    res.clearCookie('token');
+
+    return res.status(200).json({ message: 'Logged Out' })
+}
+

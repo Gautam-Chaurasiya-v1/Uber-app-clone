@@ -104,7 +104,7 @@ Requires a valid JWT token in the Authorization header or cookie:
     - `lastname` (string): User's last name (minimum 3 characters).   
   - `email` (string): User's email address (must be a valid email).
   - `password` (string): User's password (minimum 6 characters).
-- `token` (String): JWT Token## `/captains/register` Endpoint
+- `token` (String): JWT Token## `/captain/register` Endpoint
 
 ### Description
 
@@ -132,7 +132,7 @@ The request body should be in JSON format and include the following fields:
 ### Example Response
 
 
-## `/captains/register` Endpoint
+## `/captain/registerCaptain` Endpoint
 
 ### Description
 
@@ -172,7 +172,7 @@ The request body should be in JSON format and include the following fields:
     - `vehicleType` (string): Type of vehicle.
 - `token` (String): JWT Token
 
-## `/captains/login` Endpoint
+## `/captain/loginCaptain` Endpoint
 
 ### Description
 
@@ -184,7 +184,7 @@ Authenticates a captain using their email and password, returning a JWT token up
 
 ### Endpoint
 
-`/captains/login`
+`/captain/login`
 
 ### Request Body
 
@@ -208,7 +208,7 @@ The request body should be in JSON format and include the following fields:
     - `vehicleType` (string): Type of vehicle.
 - `token` (String): JWT Token
 
-## `/captains/profile` Endpoint
+## `/captain/captainProfile` Endpoint
 
 ### Description
 
@@ -236,7 +236,7 @@ Requires a valid JWT token in the Authorization header:
     - `capacity` (number): Vehicle passenger capacity.
     - `vehicleType` (string): Type of vehicle.
 
-## `/captains/logout` Endpoint
+## `/captain/logoutCaptain` Endpoint
 
 ### Description
 
